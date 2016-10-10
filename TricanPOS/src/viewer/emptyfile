@@ -1,0 +1,9 @@
+
+SELECT
+                            batch.id
+                            FROM
+                            batch
+                            WHERE
+                            batch.cost_price = ' ' AND
+                            batch.`status` = '1' AND
+                            batch.item_id = ''"

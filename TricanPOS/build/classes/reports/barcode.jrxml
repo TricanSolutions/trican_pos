@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="barcode" columnCount="4" printOrder="Horizontal" pageWidth="595" pageHeight="842" columnWidth="138" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c902d05d-cfa9-44c6-847f-78bf1d28b7df">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="grnno" class="java.lang.String"/>
+	<parameter name="datetime" class="java.lang.String"/>
+	<parameter name="grnid" class="java.lang.String"/>
+	<field name="No" class="java.lang.String"/>
+	<field name="Item Name" class="java.lang.String"/>
+	<field name="Barcode" class="java.lang.String"/>
+	<field name="Serial No" class="java.lang.String"/>
+	<field name="Qty" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="47" splitType="Stretch">
+			<staticText>
+				<reportElement x="180" y="21" width="196" height="20" uuid="83525bff-6a50-4b82-90e5-46ad49ca4eab"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GRN Barcodes Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="49" splitType="Stretch">
+			<staticText>
+				<reportElement x="23" y="26" width="60" height="14" uuid="1a6e5178-0b0c-4d3a-a7db-cd05d06d1091"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GRN No :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="324" y="6" width="58" height="14" uuid="35acb6fa-229c-4e57-b8a2-a8006738ab94"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date/Time :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="73" y="26" width="154" height="14" uuid="2c2ae7d6-f47a-4d1f-a729-121a55918c10"/>
+				<textFieldExpression><![CDATA[$P{grnno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="382" y="6" width="147" height="14" uuid="77db6fcf-a46a-4d1c-957e-d463b0b782bf"/>
+				<textFieldExpression><![CDATA[$P{datetime}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="45" width="555" height="2" uuid="12a4114e-4b4f-48e9-a49f-d7c807ce5b60"/>
+			</line>
+			<staticText>
+				<reportElement x="23" y="6" width="60" height="14" uuid="21e35fd5-ca6b-4d94-903d-738765c4cd4f"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GRN ID :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="73" y="6" width="154" height="14" uuid="66c9a3f2-d5b5-45eb-85f5-936f6f4978de"/>
+				<textFieldExpression><![CDATA[$P{grnid}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="47" splitType="Stretch">
+			<rectangle radius="5">
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="14" y="6" width="112" height="35" uuid="0dc0cc7c-e093-42dc-b6f4-da20eabb193d"/>
+			</rectangle>
+			<componentElement>
+				<reportElement stretchType="RelativeToBandHeight" x="25" y="13" width="93" height="28" uuid="e6f42470-06bf-4f01-b7c7-6a7dba44870e"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="true" checksumRequired="false">
+					<jr:codeExpression><![CDATA[$F{Barcode}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="42" splitType="Stretch">
+			<textField>
+				<reportElement x="455" y="17" width="74" height="14" uuid="ee0a5feb-f463-43dc-bf8b-0729513a643d"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="14" y="17" width="100" height="14" uuid="b3805808-3204-451c-9894-b1bcb8cd307d"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="227" y="17" width="100" height="14" uuid="e2b45e1d-1c0d-4ebb-9766-bdc44bb4ae22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[www.trican.lk]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="22" splitType="Stretch"/>
+	</summary>
+</jasperReport>
